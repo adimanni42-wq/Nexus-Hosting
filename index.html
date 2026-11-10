@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#09090f">
+  <title>NEXUS Hosting</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="brand-mark">N</span><span>NEXUS<span class="muted"> HOSTING</span></span></a>
+    <div class="top-actions"><span id="statusPill" class="pill warn">Node not connected</span><button id="logoutBtn" class="ghost hidden">Log out</button></div>
+  </header>
+  <main>
+    <section id="authView" class="auth-wrap">
+      <div class="hero">
+        <div class="eyebrow">YOUR SERVER. YOUR CONTROL.</div>
+        <h1>Minecraft hosting,<br><span class="gradient">under your control.</span></h1>
+        <p>Create and manage Java or Bedrock server records from one clean control panel. Live controls unlock when a real hosting node is connected.</p>
+      </div>
+      <div class="panel auth-panel">
+        <div class="tabs"><button class="tab active" data-mode="login">Sign in</button><button class="tab" data-mode="register">Create account</button></div>
+        <form id="authForm">
+          <label>Email address<input id="email" type="email" autocomplete="email" required placeholder="you@example.com"></label>
+          <label>Password<input id="password" type="password" autocomplete="current-password" minlength="10" required placeholder="At least 10 characters"></label>
+          <button class="primary full" id="authSubmit">Sign in</button>
+          <p id="authMessage" class="message"></p>
+        </form>
+        <p class="small muted">Keep your password private. Nexus staff will never ask you to send it.</p>
+      </div>
+    </section>
+
+    <section id="appView" class="hidden">
+      <div class="welcome-row"><div><div class="eyebrow">CONTROL CENTER</div><h1 id="welcomeTitle">Your servers</h1><p class="muted" id="welcomeSub"></p></div><div id="roleTag" class="role-tag">CUSTOMER</div></div>
+      <div class="notice"><strong>Infrastructure status</strong><span>No Minecraft hosting node is connected. You can create server records, but start/stop, console, files and live metrics remain disabled until a node is installed and securely connected.</span></div>
+      <div class="section-head"><h2>Servers</h2><button id="newServerBtn" class="primary">＋ Create server</button></div>
+      <div id="serverGrid" class="server-grid"></div>
+
+      <section id="ownerSection" class="hidden owner-section">
+        <div class="section-head"><div><div class="eyebrow">PRIVATE AREA</div><h2>Owner console</h2></div><span class="role-tag owner">OWNER ONLY</span></div>
+        <div class="admin-grid">
+          <div class="panel"><h3>Customer accounts</h3><div id="customerList" class="data-list">Loading…</div></div>
+          <div class="panel"><h3>Recent activity</h3><div id="auditList" class="data-list">Loading…</div></div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <dialog id="createDialog" class="dialog">
+    <form id="createForm">
+      <div class="dialog-head"><h2>Create a server</h2><button type="button" id="closeDialog" class="icon-btn">✕</button></div>
+      <label>Server name<input id="serverName" maxlength="32" required placeholder="My Survival Server"></label>
+      <label>Edition<select id="edition"><option>Java</option><option>Bedrock</option></select></label>
+      <p class="small muted">This creates a server record only. No game server is provisioned until a hosting node is connected.</p>
+      <button class="primary full">Create server record</button><p id="createMessage" class="message"></p>
+    </form>
+  </dialog>
+  <script src="/app.js" defer></script>
+</body>
+</html>
